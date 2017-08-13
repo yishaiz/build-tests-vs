@@ -29,6 +29,8 @@ namespace WindowsFormsWorking
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            DisplayEnvironment();
+
             InitSettings();
 
             WriteLog("Start... ");
@@ -40,6 +42,11 @@ namespace WindowsFormsWorking
         {
             logFileName = GetConfigSettings("LogFileLocation");
             timerInterval = int.Parse(GetConfigSettings("TimerInterval"));
+        }
+
+        private void DisplayEnvironment()
+        {
+            label1.Text = "Environment : " + GetConfigSettings("Environment");
         }
 
         private void StartTimer()

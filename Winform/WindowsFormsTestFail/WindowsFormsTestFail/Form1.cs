@@ -28,6 +28,8 @@ namespace WindowsFormsTestFail
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            DisplayEnvironment();
+
             InitSettings();
 
             WriteLog("Start... ");
@@ -39,6 +41,12 @@ namespace WindowsFormsTestFail
         {
             logFileName = GetConfigSettings("LogFileLocation");
             timerInterval = int.Parse(GetConfigSettings("TimerInterval"));
+        }
+
+        
+        private void DisplayEnvironment()
+        {
+            label1.Text = "Environment : " + GetConfigSettings("Environment");
         }
 
         private void StartTimer()
@@ -55,7 +63,7 @@ namespace WindowsFormsTestFail
         {
             WriteLog("Tick...");
         }
- 
+
         private void WriteLog(string textToWrite)
         {
             textToWrite =
@@ -89,6 +97,6 @@ namespace WindowsFormsTestFail
                 throw new ApplicationException("Error while trying to get value from config file - " + key + ". " + ex.Message);
             }
         }
-        
+
     }
 }
